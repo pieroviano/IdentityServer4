@@ -28,8 +28,8 @@
         <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
     </PropertyGroup>
 
-    <Target Name="CopyPackage" AfterTargets="Pack">
-        <Exec Command="if exist %userprofile%\.nuget\Packages\Net6.IdentityServer4.Storage rmdir /s /q %userprofile%\.nuget\Packages\Net6.IdentityServer4.Storage" />
+    <Target Name="DeleteOldPackage" AfterTargets="Pack" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
+        <Exec Command="if exist %userprofile%\.nuget\Packages\Net6.IdentityServer4.EntityFramework.Storage rmdir /s /q %userprofile%\.nuget\Packages\Net6.IdentityServer4.EntityFramework.Storage" />
     </Target>
 
     <PropertyGroup>
@@ -42,7 +42,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Net6.IdentityServer4.Storage" />
+        <PackageReference Include="Net6.IdentityServer4.EntityFramework.Storage" />
 
         <PackageReference Include="AutoMapper" />
 
