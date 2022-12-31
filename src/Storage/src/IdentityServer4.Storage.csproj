@@ -1,41 +1,49 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
 
-    <PackageId>IdentityServer4.Storage</PackageId>
-    <Description>Storage interfaces and models for IdentityServer4</Description>
-    <Authors>Brock Allen;Dominick Baier</Authors>
+        <PackageId>Net6.IdentityServer4.Storage</PackageId>
+        <Description>Storage interfaces and models for IdentityServer4</Description>
+        <Authors>Brock Allen;Dominick Baier</Authors>
+        <Version>1.0.0</Version>
 
-    <PackageTags>OAuth2;OAuth 2.0;OpenID Connect;Security;Identity;IdentityServer</PackageTags>
-    <PackageIcon>icon.jpg</PackageIcon>
-    <PackageProjectUrl>https://github.com/IdentityServer/IdentityServer4</PackageProjectUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageReleaseNotes>https://github.com/IdentityServer/IdentityServer4/releases</PackageReleaseNotes>
+        <PackageTags>OAuth2;OAuth 2.0;OpenID Connect;Security;Identity;IdentityServer</PackageTags>
+        <PackageIcon>icon.jpg</PackageIcon>
+        <PackageProjectUrl>https://github.com/pieroviano/IdentityServer4</PackageProjectUrl>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageReleaseNotes>https://github.com/pieroviano/IdentityServer4/releases</PackageReleaseNotes>
 
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
-    <AssemblyOriginatorKeyFile>../../../key.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
+        <AssemblyOriginatorKeyFile>../../../key.snk</AssemblyOriginatorKeyFile>
+        <SignAssembly>true</SignAssembly>
+        <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
 
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
-    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
-  </PropertyGroup>
+    <Target Name="CopyPackage" AfterTargets="Pack">
+        <Exec Command="if exist %userprofile%\.nuget\Packages\Net6.IdentityServer4.Storage rmdir /s /q %userprofile%\.nuget\Packages\Net6.IdentityServer4.Storage" />
+    </Target>
 
-  <ItemGroup>
-    <None Include="../../../icon.jpg" Pack="true" Visible="false" PackagePath="" />
-  </ItemGroup>
+    <PropertyGroup>
+        <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="IdentityModel" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="../../../icon.jpg" Pack="true" Visible="false" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="IdentityModel" />
+    </ItemGroup>
 
 </Project>
