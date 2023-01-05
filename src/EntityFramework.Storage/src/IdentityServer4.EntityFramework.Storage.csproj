@@ -43,7 +43,7 @@
 
     <ItemGroup>
         <PackageReference Include="Net6.IdentityServer4.Storage" />
-
+        
         <PackageReference Include="AutoMapper" />
 
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
