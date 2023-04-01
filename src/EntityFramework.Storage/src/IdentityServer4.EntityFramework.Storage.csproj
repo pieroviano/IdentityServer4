@@ -3,6 +3,10 @@
     <PropertyGroup>
         <PackageId>Net6.IdentityServer4.EntityFramework.Storage</PackageId>
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
+        <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
+        <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
 
         <Description>EntityFramework persistence layer for IdentityServer4</Description>
         <Authors>Brock Allen;Dominick Baier;Scott Brady</Authors>
@@ -24,7 +28,6 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
     </PropertyGroup>
 
@@ -43,7 +46,7 @@
 
     <ItemGroup>
         <PackageReference Include="Net6.IdentityServer4.Storage" />
-        
+
         <PackageReference Include="AutoMapper" />
 
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
