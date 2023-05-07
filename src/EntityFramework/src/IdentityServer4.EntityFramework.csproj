@@ -1,12 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" />
 
     <PropertyGroup>
-        <PackageId>Net6.IdentityServer4.EntityFramework</PackageId>
+        <PackageId>Net6.IdentityServer4.EntityFramework.Base</PackageId>
         <TargetFrameworks>net6.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
         <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
         <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
+        <IdentityServer4Version Condition="'$(IdentityServer4Version)' == ''">1.0.0</IdentityServer4Version>
+        <Version>$(IdentityServer4Version)$(Suffix)</Version>
 
         <Description>EntityFramework persistence layer for IdentityServer4</Description>
         <Authors>Brock Allen;Dominick Baier;Scott Brady</Authors>
@@ -32,9 +35,9 @@
         <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
     </PropertyGroup>
 
-    <Target Name="DeleteOldPackage" AfterTargets="Pack" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
-        <Exec Command="if exist %userprofile%\.nuget\Packages\Net6.IdentityServer4.EntityFramework rmdir /s /q %userprofile%\.nuget\Packages\Net6.IdentityServer4.EntityFramework" />
-    </Target>
+    <ItemGroup>
+        <PackageReference Include="NuGetUtility" Version="$(NuGetUtilityVersion)" PrivateAssets="All" />
+    </ItemGroup>
 
     <PropertyGroup>
         <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
@@ -46,9 +49,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Net6.IdentityServer4" />
-        <PackageReference Include="Net6.IdentityServer4.EntityFramework.Storage" />
+        <PackageReference Include="Net6.IdentityServer4.Base" Version="$(IdentityServer4Version).$(VersionBuildSuffix)" />
+        <PackageReference Include="Net6.IdentityServer4.EntityFramework.Storage" Version="$(IdentityServer4Version).$(VersionBuildSuffix)" />
 
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
     </ItemGroup>
+    <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" />
 </Project>

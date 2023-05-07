@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" />
 
     <PropertyGroup>
-        <PackageId>Net6.IdentityServer4</PackageId>
+        <PackageId>Net6.IdentityServer4.Base</PackageId>
         <TargetFramework>net6.0</TargetFramework>
         <Description>OpenID Connect and OAuth 2.0 Framework for ASP.NET Core</Description>
         <Authors>Brock Allen;Dominick Baier</Authors>
@@ -11,6 +12,8 @@
         <PackageProjectUrl>https://github.com/pieroviano/IdentityServer4</PackageProjectUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageReleaseNotes>https://github.com/pieroviano/IdentityServer4/releases</PackageReleaseNotes>
+        <IdentityServer4Version Condition="'$(IdentityServer4Version)' == ''">1.0.0</IdentityServer4Version>
+        <Version>$(IdentityServer4Version)$(Suffix)</Version>
 
         <!-- Declare that the Repository URL can be published to NuSpec -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -35,9 +38,9 @@
         <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
     </PropertyGroup>
 
-    <Target Name="DeleteOldPackage" AfterTargets="Pack" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
-        <Exec Command="if exist %userprofile%\.nuget\Packages\Net6.IdentityServer4 rmdir /s /q %userprofile%\.nuget\Packages\Net6.IdentityServer4" />
-    </Target>
+    <ItemGroup>
+        <PackageReference Include="NuGetUtility" Version="$(NuGetUtilityVersion)" PrivateAssets="All" />
+    </ItemGroup>
 
     <PropertyGroup>
         <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
@@ -53,7 +56,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Net6.IdentityServer4.Storage" />
+        <PackageReference Include="Net6.IdentityServer4.Storage" Version="$(IdentityServer4Version).$(VersionBuildSuffix)" />
         <PackageReference Include="IdentityModel" />
 
         <PackageReference Include="Newtonsoft.Json" />
@@ -62,4 +65,5 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
     </ItemGroup>
+  <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" />
 </Project>

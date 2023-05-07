@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" />
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,7 +7,8 @@
         <PackageId>Net6.IdentityServer4.Storage</PackageId>
         <Description>Storage interfaces and models for IdentityServer4</Description>
         <Authors>Brock Allen;Dominick Baier</Authors>
-        <Version>1.0.0</Version>
+        <IdentityServer4Version Condition="'$(IdentityServer4Version)' == ''">1.0.0</IdentityServer4Version>
+        <Version>$(IdentityServer4Version)$(Suffix)</Version>
 
         <PackageTags>OAuth2;OAuth 2.0;OpenID Connect;Security;Identity;IdentityServer</PackageTags>
         <PackageIcon>icon.jpg</PackageIcon>
@@ -32,9 +34,9 @@
         <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
     </PropertyGroup>
 
-    <Target Name="DeleteOldPackage" AfterTargets="Pack" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
-        <Exec Command="if exist %userprofile%\.nuget\Packages\Net6.IdentityServer4.Storage rmdir /s /q %userprofile%\.nuget\Packages\Net6.IdentityServer4.Storage" />
-    </Target>
+    <ItemGroup>
+        <PackageReference Include="NuGetUtility" Version="$(NuGetUtilityVersion)" PrivateAssets="All" />
+    </ItemGroup>
 
     <PropertyGroup>
         <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
@@ -48,5 +50,5 @@
     <ItemGroup>
         <PackageReference Include="IdentityModel" />
     </ItemGroup>
-
+    <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" />
 </Project>
