@@ -13,7 +13,7 @@
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageReleaseNotes>https://github.com/pieroviano/IdentityServer4/releases</PackageReleaseNotes>
         <IdentityServer4Version Condition="'$(IdentityServer4Version)' == ''">1.0.0</IdentityServer4Version>
-        <Version>$(IdentityServer4Version)$(Suffix)</Version>
+        <Version>$(VersionPrefix).$(VersionSuffix)</Version>
 
         <!-- Declare that the Repository URL can be published to NuSpec -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
