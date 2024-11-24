@@ -3,7 +3,7 @@
   <PropertyGroup>
     <FrameworkVersion>3.1.0</FrameworkVersion>
     <ExtensionsVersion>3.1.0</ExtensionsVersion>
-    <EntityFrameworkVersion>3.1.0</EntityFrameworkVersion>
+    <EntityFramework6Version>3.1.0</EntityFramework6Version>
     
     <IdentityServerVersion>4.1.2-*</IdentityServerVersion>
   </PropertyGroup>
@@ -53,11 +53,11 @@
     <PackageReference Update="Microsoft.AspNetCore.Authentication.Certificate" Version="$(FrameworkVersion)"/>
     
     <!--microsoft entity framework -->
-    <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)" />
-    <PackageReference Update="Microsoft.EntityFrameworkCore.Sqlite" Version="$(EntityFrameworkVersion)" />
-    <PackageReference Update="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFrameworkVersion)" />
-    <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)" />
-    <PackageReference Update="Microsoft.EntityFrameworkCore.Design" Version="$(EntityFrameworkVersion)" PrivateAssets="All" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFramework6Version)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Sqlite" Version="$(EntityFramework6Version)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFramework6Version)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFramework6Version)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Design" Version="$(EntityFramework6Version)" PrivateAssets="All" />
 
   </ItemGroup>
 

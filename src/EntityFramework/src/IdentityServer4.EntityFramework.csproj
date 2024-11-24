@@ -1,7 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" />
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" />
     <PropertyGroup>
+        <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
         <PackageId>Net6.IdentityServer4.EntityFramework.Base</PackageId>
         <TargetFrameworks>net6.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -10,7 +11,6 @@
         <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
         <IdentityServer4Version Condition="'$(IdentityServer4Version)' == ''">1.0.0</IdentityServer4Version>
         <Version>$(VersionPrefix).$(VersionSuffix)</Version>
-
         <Description>EntityFramework persistence layer for IdentityServer4</Description>
         <Authors>Brock Allen;Dominick Baier;Scott Brady</Authors>
         <AssemblyName>IdentityServer4.EntityFramework</AssemblyName>
@@ -20,39 +20,33 @@
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageReleaseNotes>https://github.com/pieroviano/IdentityServer4/releases</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-
         <AssemblyOriginatorKeyFile>../../../key.snk</AssemblyOriginatorKeyFile>
         <SignAssembly>true</SignAssembly>
         <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
-
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
+        <DontConvert>False</DontConvert>
     </PropertyGroup>
-
     <ItemGroup>
-        <PackageReference Include="NuGetUtility" Version="$(NuGetUtilityVersion)" PrivateAssets="All" />
+        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
     </ItemGroup>
-
     <PropertyGroup>
         <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
         <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
     </PropertyGroup>
-
     <ItemGroup>
-        <None Include="../../../icon.jpg" Pack="true" Visible="false" PackagePath="" />
+        <None Include="../../../icon.jpg" Pack="true" PackagePath="" Visible="false" />
     </ItemGroup>
-
     <ItemGroup>
-        <PackageReference Include="Net6.IdentityServer4.Base" Version="$(IdentityServer4Version).$(VersionBuildSuffix)" />
-        <PackageReference Include="Net6.IdentityServer4.EntityFramework.Storage" Version="$(IdentityServer4Version).$(VersionBuildSuffix)" />
-
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
     </ItemGroup>
-    <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" />
+    <ItemGroup>
+        <ProjectReference Include="..\..\EntityFramework.Storage\src\IdentityServer4.EntityFramework.Storage.csproj" />
+        <ProjectReference Include="..\..\IdentityServer4\src\IdentityServer4.Base.csproj" />
+    </ItemGroup>
+    <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" />
 </Project>

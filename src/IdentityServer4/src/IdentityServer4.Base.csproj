@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" />
-
+    <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" />
     <PropertyGroup>
+        <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
         <PackageId>Net6.IdentityServer4.Base</PackageId>
         <TargetFramework>net6.0</TargetFramework>
         <Description>OpenID Connect and OAuth 2.0 Framework for ASP.NET Core</Description>
@@ -14,20 +15,17 @@
         <PackageReleaseNotes>https://github.com/pieroviano/IdentityServer4/releases</PackageReleaseNotes>
         <IdentityServer4Version Condition="'$(IdentityServer4Version)' == ''">1.0.0</IdentityServer4Version>
         <Version>$(VersionPrefix).$(VersionSuffix)</Version>
-
         <!-- Declare that the Repository URL can be published to NuSpec -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <!-- Embed source files that are not tracked by the source control manager to the PDB -->
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <!-- Include PDB in the built .nupkg -->
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-
         <!-- strong naming fml -->
         <AssemblyOriginatorKeyFile>../../../key.snk</AssemblyOriginatorKeyFile>
         <SignAssembly>true</SignAssembly>
         <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -35,35 +33,30 @@
         <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
         <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
         <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
-        <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
+        <DontConvert>False</DontConvert>
     </PropertyGroup>
-
     <ItemGroup>
-        <PackageReference Include="NuGetUtility" Version="$(NuGetUtilityVersion)" PrivateAssets="All" />
+        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
     </ItemGroup>
-
     <PropertyGroup>
         <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
         <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
     </PropertyGroup>
-
     <ItemGroup>
-        <None Include="../../../icon.jpg" Pack="true" Visible="false" PackagePath="" />
+        <None Include="../../../icon.jpg" Pack="true" PackagePath="" Visible="false" />
     </ItemGroup>
-
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
-
     <ItemGroup>
-        <PackageReference Include="Net6.IdentityServer4.Storage" Version="$(IdentityServer4Version).$(VersionBuildSuffix)" />
         <PackageReference Include="IdentityModel" />
-
-        <PackageReference Include="Newtonsoft.Json" />
-        <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
-
         <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+        <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+        <PackageReference Include="Newtonsoft.Json" />
     </ItemGroup>
-  <Import Project = "$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" />
+    <ItemGroup>
+        <ProjectReference Include="..\..\Storage\src\IdentityServer4.Storage.csproj" />
+    </ItemGroup>
+    <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" />
 </Project>

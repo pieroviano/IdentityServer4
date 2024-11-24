@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <PackageId>Net6.IdentityServer4.AspNetIdentity</PackageId>
+        <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
         <TargetFrameworks>net6.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
@@ -29,7 +30,6 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PackageOutputPath>$(SolutionDir)..\..\nuget\</PackageOutputPath>
     </PropertyGroup>
 
     <Target Name="DeleteOldPackage" AfterTargets="Pack" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
@@ -56,9 +56,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Net6.IdentityServer4" />
 
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\IdentityServer4\src\IdentityServer4.Base.csproj" />
     </ItemGroup>
 
 </Project>
