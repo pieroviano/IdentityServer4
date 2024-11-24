@@ -3,13 +3,12 @@
     <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" />
     <PropertyGroup>
         <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
-        <PackageId>Net6.IdentityServer4.EntityFramework.Base</PackageId>
-        <TargetFrameworks>net6.0</TargetFrameworks>
+        <PackageId>Net8.IdentityServer4.EntityFramework.Base</PackageId>
+        <TargetFrameworks>net8.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
         <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
         <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
-        <IdentityServer4Version Condition="'$(IdentityServer4Version)' == ''">1.0.0</IdentityServer4Version>
         <Version>$(VersionPrefix).$(VersionSuffix)</Version>
         <Description>EntityFramework persistence layer for IdentityServer4</Description>
         <Authors>Brock Allen;Dominick Baier;Scott Brady</Authors>
@@ -34,15 +33,12 @@
     <ItemGroup>
         <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
     </ItemGroup>
-    <PropertyGroup>
-        <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
-        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
-    </PropertyGroup>
     <ItemGroup>
         <None Include="../../../icon.jpg" Pack="true" PackagePath="" Visible="false" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="$(MicrosoftDataSqlClientVersion)" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" IncludeAssets="runtime; build; native; contentfiles; analyzers" PrivateAssets="all" Version="$(MicrosoftSourceLinkGitHubVersion)" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\EntityFramework.Storage\src\IdentityServer4.EntityFramework.Storage.csproj" />

@@ -3,8 +3,8 @@
     <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" />
     <PropertyGroup>
         <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
-        <PackageId>Net6.IdentityServer4.EntityFramework.Storage</PackageId>
-        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <PackageId>Net8.IdentityServer4.EntityFramework.Storage</PackageId>
+        <TargetFrameworks>net8.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
         <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
@@ -31,19 +31,14 @@
         <DontConvert>False</DontConvert>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
-    </ItemGroup>
-    <PropertyGroup>
-        <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
-        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
-    </PropertyGroup>
-    <ItemGroup>
         <None Include="../../../icon.jpg" Pack="true" PackagePath="" Visible="false" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="AutoMapper" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+        <PackageReference Include="AutoMapper" Version="$(AutoMapperVersion)" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="$(MicrosoftDataSqlClientVersion)" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="$(LastNetVersion)" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" IncludeAssets="runtime; build; native; contentfiles; analyzers" PrivateAssets="all" Version="$(MicrosoftSourceLinkGitHubVersion)" />
+        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Storage\src\IdentityServer4.Storage.csproj" />

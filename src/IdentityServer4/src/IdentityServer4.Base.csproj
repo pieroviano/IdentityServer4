@@ -3,8 +3,8 @@
     <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" />
     <PropertyGroup>
         <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
-        <PackageId>Net6.IdentityServer4.Base</PackageId>
-        <TargetFramework>net6.0</TargetFramework>
+        <PackageId>Net8.IdentityServer4.Base</PackageId>
+        <TargetFramework>net8.0</TargetFramework>
         <Description>OpenID Connect and OAuth 2.0 Framework for ASP.NET Core</Description>
         <Authors>Brock Allen;Dominick Baier</Authors>
         <AssemblyName>IdentityServer4</AssemblyName>
@@ -34,13 +34,9 @@
         <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
         <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
         <DontConvert>False</DontConvert>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
-    </ItemGroup>
-    <PropertyGroup>
         <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
         <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+        <RootNamespace>IdentityServer4</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
         <None Include="../../../icon.jpg" Pack="true" PackagePath="" Visible="false" />
@@ -49,11 +45,12 @@
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="IdentityModel" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
-        <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
-        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="IdentityModel" Version="$(IdentityModelVersion)" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(LastNetVersion)" />
+        <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(SystemIdentityModelTokensJwtVersion)" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" IncludeAssets="runtime; build; native; contentfiles; analyzers" PrivateAssets="all" Version="$(MicrosoftSourceLinkGitHubVersion)" />
+        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="$(SystemIdentityModelTokensJwtVersion)" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Storage\src\IdentityServer4.Storage.csproj" />

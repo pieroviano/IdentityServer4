@@ -24780,6 +24780,69 @@
         "Name": "EntityFramework\\src\\IdentityServer4.EntityFramework.csproj",
         "Project": "Net6.IdentityServer4.EntityFramework.Base",
         "PackageReferences": null
+      },
+      {
+        "Name": "Storage\\src\\IdentityServer4.Storage.csproj",
+        "Project": "Net8.IdentityServer4.Storage",
+        "PackageReferences": null
+      },
+      {
+        "Name": "IdentityServer4\\src\\IdentityServer4.Base.csproj",
+        "Project": "Net8.IdentityServer4.Base",
+        "PackageReferences": null
+      },
+      {
+        "Name": "EntityFramework.Storage\\src\\IdentityServer4.EntityFramework.Storage.csproj",
+        "Project": "Net8.IdentityServer4.EntityFramework.Storage",
+        "PackageReferences": null
+      },
+      {
+        "Name": "EntityFramework\\src\\IdentityServer4.EntityFramework.csproj",
+        "Project": "Net8.IdentityServer4.EntityFramework.Base",
+        "PackageReferences": null
+      },
+      {
+        "Name": "IdentityServer4\\test\\IdentityServer.UnitTests\\IdentityServer.UnitTests.csproj",
+        "Project": "IdentityServer.UnitTests",
+        "PackageReferences": null
+      },
+      {
+        "Name": "IdentityServer4\\test\\IdentityServer.IntegrationTests\\IdentityServer.IntegrationTests.csproj",
+        "Project": "IdentityServer.IntegrationTests",
+        "PackageReferences": null
+      },
+      {
+        "Name": "EntityFramework.Storage\\test\\UnitTests\\IdentityServer4.EntityFramework.UnitTests.csproj",
+        "Project": "IdentityServer4.EntityFramework.UnitTests",
+        "PackageReferences": null
+      },
+      {
+        "Name": "EntityFramework.Storage\\test\\IntegrationTests\\IdentityServer4.EntityFramework.IntegrationTests.csproj",
+        "Project": "IdentityServer4.EntityFramework.IntegrationTests",
+        "PackageReferences": null
+      },
+      {
+        "Name": "EntityFramework\\test\\IdentityServer4.EntityFramework.Tests\\IdentityServer4.EntityFramework.Tests.csproj",
+        "Project": "IdentityServer4.EntityFramework.Tests",
+        "PackageReferences": null
+      },
+      {
+        "Name": "IdentityServer4\\host\\Host.csproj",
+        "Project": "Host",
+        "PackageReferences": null
+      }
+    ]
+  },
+  {
+    "Solution": {
+      "Path": "D:\\Starb\\Starb.sln",
+      "Version": "StarbVersion"
+    },
+    "NuGetPackages": [
+      {
+        "Name": "VbExplorer.CustomAction",
+        "Project": "VbExplorer\\VbExplorerCustomAction\\VbExplorerCustomAction.vbproj",
+        "PackageReferences": null
       }
     ]
   }

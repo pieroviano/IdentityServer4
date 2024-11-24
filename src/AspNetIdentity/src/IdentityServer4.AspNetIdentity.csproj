@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageId>Net6.IdentityServer4.AspNetIdentity</PackageId>
+        <PackageId>Net8.IdentityServer4.AspNetIdentity</PackageId>
         <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
-        <TargetFrameworks>net6.0</TargetFrameworks>
+        <TargetFrameworks>net8.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
         <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
@@ -32,21 +32,6 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
-    <Target Name="DeleteOldPackage" AfterTargets="Pack" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
-        <Exec Command="if exist %userprofile%\.nuget\Packages\Net6.IdentityServer4.AspNetIdentity rmdir /s /q %userprofile%\.nuget\Packages\Net6.IdentityServer4.AspNetIdentity" />
-    </Target>
-
-    <PropertyGroup>
-        <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
-        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
-        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
-    </PropertyGroup>
-
-
     <ItemGroup>
         <None Include="../../../icon.jpg" Pack="true" Visible="false" PackagePath="" />
     </ItemGroup>
@@ -57,7 +42,7 @@
 
     <ItemGroup>
 
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+	    <PackageReference Include="Microsoft.SourceLink.GitHub" IncludeAssets="runtime; build; native; contentfiles; analyzers" PrivateAssets="all" Version="$(MicrosoftSourceLinkGitHubVersion)" />
     </ItemGroup>
 
     <ItemGroup>

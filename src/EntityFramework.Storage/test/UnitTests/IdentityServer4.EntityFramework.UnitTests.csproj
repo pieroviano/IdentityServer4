@@ -1,28 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
-    <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
-    <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
-
-    <AssemblyOriginatorKeyFile>../../../../key.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\IdentityServer4.EntityFramework.Storage.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="FluentAssertions" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" />
-    <PackageReference Include="xunit" />
-    <PackageReference Include="xunit.runner.visualstudio" />
-    
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
-  </ItemGroup>
-
+    <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.props" />
+    <PropertyGroup>
+        <PackageOutputPath>$(SolutionDir)Packages/</PackageOutputPath>
+        <Version>$(VersionPrefix).$(VersionSuffix)</Version>
+        <TargetFrameworks>net8.0</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols Condition="'$(Configuration)'=='Debug'">true</IncludeSymbols>
+        <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
+        <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
+        <AssemblyOriginatorKeyFile>../../../../key.snk</AssemblyOriginatorKeyFile>
+        <SignAssembly>true</SignAssembly>
+        <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\IdentityServer4.EntityFramework.Storage.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(LastNetVersion)" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNetTestSdkVersion)" />
+        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
+        <PackageReference Include="xunit" Version="$(XunitVersion)" />
+        <PackageReference Include="xunit.runner.visualstudio" IncludeAssets="runtime; build; native; contentfiles; analyzers" PrivateAssets="all" Version="$(XunitRunnerVisualStudioVersion)" />
+    </ItemGroup>
+    <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" />
 </Project>

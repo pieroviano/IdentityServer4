@@ -194,7 +194,8 @@ namespace IdentityServer.IntegrationTests.Clients
                 Token = response.AccessToken
             });
 
-            roles = ((JArray)userInfo.Json["role"]).Select(x => x.ToString()).ToArray();
+            var o = (JArray)(JsonConvert.DeserializeObject<Dictionary<string, object>>(userInfo.Json.Value.ToString()))["role"];
+            roles = o.Select(x => x.ToString()).ToArray();
             roles.Length.Should().Be(2);
             roles.Should().Contain("Geek");
             roles.Should().Contain("Developer");

@@ -12,6 +12,7 @@ using FluentAssertions;
 using IdentityModel;
 using IdentityModel.Client;
 using IdentityServer.IntegrationTests.Clients.Setup;
+using IdentityServer.IntegrationTests.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
@@ -170,8 +171,8 @@ namespace IdentityServer.IntegrationTests.Clients
 
             // raw fields
             var fields = GetFields(response);
-            fields.Should().Contain("string_value", "some_string");
-            ((Int64)fields["int_value"]).Should().Be(42);
+            Assert.True(fields.Any(kv=>kv.Key=="string_value" && kv.Value.ToString()== "some_string"));
+            ((long)(fields["int_value"])).Should().Be(42);
 
             object temp;
             fields.TryGetValue("identity_token", out temp).Should().BeFalse();
@@ -281,7 +282,12 @@ namespace IdentityServer.IntegrationTests.Clients
 
         private Dictionary<string, object> GetFields(TokenResponse response)
         {
-            return response.Json.ToObject<Dictionary<string, object>>();
+            if (response.Json != null)
+            {
+                return JsonConvert.DeserializeObject<Dictionary<string, object>>(response.Json.Value.ToString());
+            }
+
+            return new Dictionary<string, object>();
         }
 
         private Dictionary<string, object> GetPayload(TokenResponse response)

@@ -11,11 +11,12 @@
     <AppDomainTaskLibraryVersion>1.9.0</AppDomainTaskLibraryVersion>
     <ArchiveDatabaseLibraryVersion>1.2.1</ArchiveDatabaseLibraryVersion>
     <AsyncEnumerableVersion>1.3.0</AsyncEnumerableVersion>
-    <AuthenticatorYubiKeyVersion>3.2.4</AuthenticatorYubiKeyVersion>
+    <AuthenticatorYubiKeyVersion>3.3.0</AuthenticatorYubiKeyVersion>
+    <AutoMapperVersion>13.0.1</AutoMapperVersion>
     <BackgroundWorkerLibraryVersion>2.3.0</BackgroundWorkerLibraryVersion>
     <BarcodeVersion>1.2.0</BarcodeVersion>
     <BrutalDevStrongNameSignerVersion>3.2.1</BrutalDevStrongNameSignerVersion>
-    <CefSharpLibraryVersion>2.2.0</CefSharpLibraryVersion>
+    <CefSharpLibraryVersion>2.4.0</CefSharpLibraryVersion>
     <CertificateLibraryVersion>1.0.0</CertificateLibraryVersion>
     <CodeDomExtVersion>2.2.0</CodeDomExtVersion>
     <CodeDomModifierVersion>1.0.0</CodeDomModifierVersion>
@@ -54,6 +55,7 @@
     <EntityFrameworkVersion>6.4.4</EntityFrameworkVersion>
     <ExcelLibraryVersion>1.18.0</ExcelLibraryVersion>
     <FatturaElettronicaVersion>3.2.1</FatturaElettronicaVersion>
+    <FluentAssertionsVersion>6.12.2</FluentAssertionsVersion>
     <FluentValidation9Version>9.2.2</FluentValidation9Version>
     <FluentValidationVersion>11.5.2</FluentValidationVersion>
     <FormLoggingVersion>1.4.0</FormLoggingVersion>
@@ -66,6 +68,7 @@
     <Html2XhtmlVersion>1.2.0</Html2XhtmlVersion>
     <HtmlCleanerVersion>1.4.0</HtmlCleanerVersion>
     <IdentityApplicationVersion>2.2.0</IdentityApplicationVersion>
+    <IdentityModelVersion>7.0.0</IdentityModelVersion>
     <IdentityServer4StorageVersion>4.0.0</IdentityServer4StorageVersion>
     <IdentityServer4Version>4.1.0</IdentityServer4Version>
     <ImmatricolazioniLibraries>1.0.0</ImmatricolazioniLibraries>
@@ -78,13 +81,16 @@
     <iTextCoreVersion>1.3.0</iTextCoreVersion>
     <iTextSharpPdfaVersion>6.0.0</iTextSharpPdfaVersion>
     <KillChromeDriverVersion>2.2.0</KillChromeDriverVersion>
+    <LastNetVersion>8.0.11</LastNetVersion>
     <LibEntityFrameworkVersion>1.5.0</LibEntityFrameworkVersion>
     <MdiInActiveXVersion>2.2.0</MdiInActiveXVersion>
     <MergeTablesVersion>1.3.0</MergeTablesVersion>
     <MetroFrameworkVersion>1.4.0</MetroFrameworkVersion>
-    <MicrosoftDataSqlClientVersion>5.1.1</MicrosoftDataSqlClientVersion>
+    <MicrosoftDataSqlClientVersion>5.2.2</MicrosoftDataSqlClientVersion>
     <MicrosoftExtensionsLogging461Version>2.2.0</MicrosoftExtensionsLogging461Version>
     <MicrosoftExtensionsLoggingVersion>7.0.0</MicrosoftExtensionsLoggingVersion>
+    <MicrosoftNetTestSdkVersion>17.12.0</MicrosoftNetTestSdkVersion>
+    <MicrosoftSourceLinkGitHubVersion>8.0.0</MicrosoftSourceLinkGitHubVersion>
     <MicrosoftSqlServerTypesVersion>4.0.0</MicrosoftSqlServerTypesVersion>
     <MockAdoNetVersion>1.1.0</MockAdoNetVersion>
     <MSBuildCommunityTasksVersion>1.6.0</MSBuildCommunityTasksVersion>
@@ -139,8 +145,9 @@
     <ProjectsFormatLibraryVersion>1.9.0</ProjectsFormatLibraryVersion>
     <QuestionsLibraryVersion>1.42.0</QuestionsLibraryVersion>
     <SchedulerLibraryVersion>1.1.0</SchedulerLibraryVersion>
-    <SeleniumLibraryVersion>1.2.0</SeleniumLibraryVersion>
+    <SeleniumLibraryVersion>1.3.0</SeleniumLibraryVersion>
     <serilog-sinks-fileVersion>5.0.1</serilog-sinks-fileVersion>
+    <SerilogAspNetCoreVersion>8.0.3</SerilogAspNetCoreVersion>
     <serilogextensionsloggingVersion>3.2.0</serilogextensionsloggingVersion>
     <SerilogExtensionsLoggingVersion>3.2.0</SerilogExtensionsLoggingVersion>
     <serilogsinksconsoleVersion>4.2.0</serilogsinksconsoleVersion>
@@ -168,9 +175,11 @@
     <SystemDataSqlClientVersion>4.8.5</SystemDataSqlClientVersion>
     <SystemDrawingCommon8Version>8.0.0</SystemDrawingCommon8Version>
     <SystemDrawingCommonVersion>7.0.0</SystemDrawingCommonVersion>
+    <SystemIdentityModelTokensJwtVersion>8.2.1</SystemIdentityModelTokensJwtVersion>
     <SystemMemoryVersion>4.5.5</SystemMemoryVersion>
     <SystemSecurityPermissions9Version>9.0.0</SystemSecurityPermissions9Version>
     <SystemSecurityPermissionsVersion>7.0.0</SystemSecurityPermissionsVersion>
+    <SystemSecurityPrincipalWindowsVersion>5.0.0</SystemSecurityPrincipalWindowsVersion>
     <TaskSchedulerLibraryVersion>1.3.0</TaskSchedulerLibraryVersion>
     <TextControlVersion>1.2.0</TextControlVersion>
     <TitaniumProxyLibraryVersion>1.72.0</TitaniumProxyLibraryVersion>
@@ -203,6 +212,8 @@
     <WrapperGeneratorVersion>1.2.0</WrapperGeneratorVersion>
     <Xsd2DbLibraryVersion>1.1.0</Xsd2DbLibraryVersion>
     <Xsd2DbVersion>1.4.0</Xsd2DbVersion>
+    <XunitRunnerVisualStudioVersion>2.8.2</XunitRunnerVisualStudioVersion>
+    <XunitVersion>2.9.2</XunitVersion>
     <ZipCodeApiVersion>1.0.0</ZipCodeApiVersion>
   </PropertyGroup>
 </Project>

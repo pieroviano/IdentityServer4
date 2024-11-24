@@ -4,7 +4,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <PackageOutputPath>$(SolutionDir)../Packages/</PackageOutputPath>
-        <PackageId>Net6.IdentityServer4.Storage</PackageId>
+        <PackageId>Net8.IdentityServer4.Storage</PackageId>
         <Description>Storage interfaces and models for IdentityServer4</Description>
         <Authors>Brock Allen;Dominick Baier</Authors>
         <Version>$(VersionPrefix).$(VersionSuffix)</Version>
@@ -27,19 +27,17 @@
         <SymbolPackageFormat Condition="'$(Configuration)'=='Debug'">snupkg</SymbolPackageFormat>
         <IncludeSymbols Condition="'$(Configuration)'!='Debug'">false</IncludeSymbols>
         <DontConvert>False</DontConvert>
+        <RootNamespace>IdentityServer4</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="IdentityModel" Version="$(IdentityModelVersion)" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" IncludeAssets="runtime; build; native; contentfiles; analyzers" PrivateAssets="all" Version="$(MicrosoftSourceLinkGitHubVersion)" />
+        <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
         <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="$(SystemIdentityModelTokensJwtVersion)" />
     </ItemGroup>
-    <PropertyGroup>
-        <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
-        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
-    </PropertyGroup>
     <ItemGroup>
         <None Include="../../../icon.jpg" Pack="true" PackagePath="" Visible="false" />
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="IdentityModel" />
     </ItemGroup>
     <Import Condition="Exists('$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets')" Project="$(NuGetPackageRoot)nugetutility/$(NuGetUtilityVersion)/build/NuGet.Utility.targets" />
 </Project>

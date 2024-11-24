@@ -102,7 +102,7 @@ namespace IdentityServer.IntegrationTests.Conformance.Basic
 
             var url = _mockPipeline.CreateAuthorizeUrl(
                 clientId: "code_client",
-                responseType: null, // missing
+                responseType: "null", // missing
                 scope: "openid",
                 redirectUri: "https://code_client/callback",
                 state: state,
