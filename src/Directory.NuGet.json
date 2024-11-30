@@ -7352,6 +7352,11 @@
             "Version": "$(NuGetUtilityVersion)"
           }
         ]
+      },
+      {
+        "Name": "Net4x.SystemBuffers",
+        "Project": "Net4x.Buffers\\Net4x.SystemBuffers.csproj",
+        "PackageReferences": null
       }
     ]
   },
@@ -15050,6 +15055,16 @@
             "Version": null
           }
         ]
+      },
+      {
+        "Name": "Net8.IdentityServer4.EntityFramework.Base",
+        "Project": "src\\IdentityServer4.EntityFramework.csproj",
+        "PackageReferences": null
+      },
+      {
+        "Name": "IdentityServer4.EntityFramework.Tests",
+        "Project": "test\\IdentityServer4.EntityFramework.Tests\\IdentityServer4.EntityFramework.Tests.csproj",
+        "PackageReferences": null
       }
     ]
   },
@@ -24842,6 +24857,84 @@
       {
         "Name": "VbExplorer.CustomAction",
         "Project": "VbExplorer\\VbExplorerCustomAction\\VbExplorerCustomAction.vbproj",
+        "PackageReferences": null
+      }
+    ]
+  },
+  {
+    "Solution": {
+      "Path": "D:\\CommonLibrary\\OpenSearch.Extensions\\OpenSearch.Extensions.sln",
+      "Version": "OpenSearchExtensionsVersion"
+    },
+    "NuGetPackages": [
+      {
+        "Name": "Net4x.OpenSearch.Extensions",
+        "Project": "OpenSearch.Extensions\\OpenSearch.Extensions.csproj",
+        "PackageReferences": null
+      }
+    ]
+  },
+  {
+    "Solution": {
+      "Path": "D:\\CommonLibrary\\NuGetUtility\\CompileLibrary\\CompileLibrary.sln",
+      "Version": "CompileLibraryVersion"
+    },
+    "NuGetPackages": [
+      {
+        "Name": "Net4x.CompileLibrary",
+        "Project": "CompileLibrary\\CompileLibrary.csproj",
+        "PackageReferences": null
+      }
+    ]
+  },
+  {
+    "Solution": {
+      "Path": "D:\\CommonLibrary\\PdfViewerLibrary\\PdfLibNet\\PdfLibNet.x64.NetCore.sln",
+      "Version": "PdfLibNetx64NetCoreVersion"
+    },
+    "NuGetPackages": [
+      {
+        "Name": "Net4x.PdfLibNetLibrary",
+        "Project": "PdfLibNetLibrary\\PdfLibNetLibrary.csproj",
+        "PackageReferences": null
+      }
+    ]
+  },
+  {
+    "Solution": {
+      "Path": "D:\\CommonLibrary\\PdfViewerLibrary\\PdfLibNet\\PdfLibNet.x64.sln",
+      "Version": "PdfLibNetx64Version"
+    },
+    "NuGetPackages": [
+      {
+        "Name": "Net4x.PdfLibNetLibrary",
+        "Project": "PdfLibNetLibrary\\PdfLibNetLibrary.csproj",
+        "PackageReferences": null
+      }
+    ]
+  },
+  {
+    "Solution": {
+      "Path": "D:\\CommonLibrary\\PdfViewerLibrary\\PdfLibNet\\PdfLibNet.x86.NetCore.sln",
+      "Version": "PdfLibNetx86NetCoreVersion"
+    },
+    "NuGetPackages": [
+      {
+        "Name": "Net4x.PdfLibNetLibrary",
+        "Project": "PdfLibNetLibrary\\PdfLibNetLibrary.csproj",
+        "PackageReferences": null
+      }
+    ]
+  },
+  {
+    "Solution": {
+      "Path": "D:\\CommonLibrary\\PdfViewerLibrary\\PdfLibNet\\PdfLibNet.x86.sln",
+      "Version": "PdfLibNetx86Version"
+    },
+    "NuGetPackages": [
+      {
+        "Name": "Net4x.PdfLibNetLibrary",
+        "Project": "PdfLibNetLibrary\\PdfLibNetLibrary.csproj",
         "PackageReferences": null
       }
     ]
